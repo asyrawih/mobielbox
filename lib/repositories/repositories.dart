@@ -7,14 +7,14 @@ import 'package:mobilbox/model/product_response.dart';
 
 
 class UserRepository {
-  var loginUrl = '';
-  var updateProfile = '';
-  var registerApi = '';
-  var registerPhoneApi = '';
-  var phoneVerifyApi = '';
-  var loginApi = '';
-  var resetPasswordAPI = '';
-  var getProductsGears = '';
+  var loginUrl = 'https://api.zochil.shop/v1/users/login-with-facebook';
+  var updateProfile = 'https://api.zochil.shop/v1/users/update-profile';
+  var registerApi = 'https://api.zochil.shop/v1/users/register';
+  var registerPhoneApi = 'https://api.zochil.shop/v1/users/register-with-phone';
+  var phoneVerifyApi = 'https://api.zochil.shop/v1/users/verify-phone';
+  var loginApi = 'https://api.zochil.shop/v1/users/login';
+  var resetPasswordAPI = 'https://api.zochil.shop/v1/products/by-shop-and-id/1143';
+  var getProductsGears = 'https://api.zochil.shop/v1/products/by-shop-and-id/81';
   var getProductLeasing = '';
   
 
@@ -93,7 +93,8 @@ class UserRepository {
 
   Future<String> login(String phone, String password) async {
     Response response = await _dio.post(loginApi, data: {
- 
+      "phone": phone,
+      "password": password,
     });
     return response.data["access_token"];
   }
@@ -105,7 +106,11 @@ class UserRepository {
       String email,
       String password}) async {
     Map data = {
-     
+      'first_name': firstName,
+      'last_name': lastName,
+      'phone': phone,
+      'email': email,
+      'password': password
     };
     var body = json.encode(data);
     var response = await http.post(registerApi,
@@ -124,7 +129,9 @@ class UserRepository {
     String password,
   }) async {
     Response response = await _dio.post(phoneVerifyApi, data: {
-      
+      'phone': phone,
+      'otp': otp,
+      'password': password,
     });
     return response.data["access_token"];
   }
@@ -133,7 +140,7 @@ class UserRepository {
     String phone,
   }) async {
     Map data = {
- 
+      'phone': phone,
     };
     var body = json.encode(data);
     var response = await http.post(resetPasswordAPI,
@@ -152,7 +159,9 @@ class UserRepository {
     String phone,
   }) async {
     Map data = {
-      
+      'first_name': firstName,
+      'last_name': lastName,
+      'phone': phone,
     };
     var body = json.encode(data);
     var response = await http.post(registerPhoneApi,
@@ -172,7 +181,10 @@ class UserRepository {
       String email,
       String token}) async {
     Map data = {
-    
+      'first_name': firstName,
+      'last_name': lastName,
+      'phone': phone,
+      'email': email
     };
     var body = json.encode(data);
     var response = await http.post(updateProfile,

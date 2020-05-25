@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mobilbox/screen/login/login_screen.dart';
 import 'authentication/authentication.dart';
 import 'common/loading_indicator.dart';
-import 'home/home_page.dart';
 import 'repositories/repositories.dart';
 import 'screen/home_screen.dart';
 import 'splash/splash_page.dart';
