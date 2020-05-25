@@ -13,9 +13,9 @@ class UserRepository {
   var registerPhoneApi = 'https://api.zochil.shop/v1/users/register-with-phone';
   var phoneVerifyApi = 'https://api.zochil.shop/v1/users/verify-phone';
   var loginApi = 'https://api.zochil.shop/v1/users/login';
-  var resetPasswordAPI = 'https://api.zochil.shop/v1/products/by-shop-and-id/1143';
-  var getProductsGears = 'https://api.zochil.shop/v1/products/by-shop-and-id/81';
-  var getProductLeasing = '';
+  var resetPasswordAPI = '';
+  var getProductsGears = 'https://api.zochil.shop/v1/products/by-shop/81?category_id=1142';
+  var getProductLeasing = 'https://api.zochil.shop/v1/products/by-shop/81?category_id=1719';
   
 
   final Dio _dio = Dio();
